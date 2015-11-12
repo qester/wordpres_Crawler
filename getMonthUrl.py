@@ -58,7 +58,10 @@ def getblogs(url, page_count):
         #得到title元素
         page_list = re.findall(pattern_title,content,re.M)
         parser = HTMLParser()
-        title =  parser.unescape(page_list[0][1])
+        try:
+            title =  parser.unescape(page_list[0][1])
+        except:
+            title = page_list[0][1]
         #得到发表时间
         time = re.findall(pattern_time, content,re.M)
         time = time[0][1]
